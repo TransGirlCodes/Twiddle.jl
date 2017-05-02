@@ -32,6 +32,13 @@ manipulation of such binary data allows you to do operations on many nibbles
 
 # Nibble methods
 
+```@meta
+CurrentModule = Twiddle
+DocTestSetup  = quote
+    using Twiddle
+end
+```
+
 ```@autodocs
 Modules = [Twiddle]
 Order = [:function]
