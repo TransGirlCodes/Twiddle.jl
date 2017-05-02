@@ -16,7 +16,6 @@ docs_dir: 'build'
 
 # Options
 extra:
-  logo: images/biojl.png
   author:
     github: Ward9250
 
@@ -37,7 +36,9 @@ markdown_extensions:
 
 # Page tree
 pages:
-- Home: index.md
+- Twiddle: index.md
 - Manual:
     - Contents: manual.md
     - Glossary: glossary.md
+- Contributing: contributing.md
+- Licence: license.md
