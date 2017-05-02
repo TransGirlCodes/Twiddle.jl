@@ -1,6 +1,6 @@
 # Manual
 
 ```@contents
-Pages = ["glossary.md"]
+Pages = ["nibbles.md", "glossary.md"]
 Depth = 5
 ```
