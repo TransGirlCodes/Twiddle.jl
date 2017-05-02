@@ -10,3 +10,8 @@ could, by taking advantage of succinct bit-encoding of the sequences.
 
 This package however is supposed to be more general, and we want it to contain
 many bit-twiddling tips and tricks.
+
+## Status
+
+[![Build Status](https://travis-ci.org/Ward9250/Twiddle.jl.svg?branch=develop)](https://travis-ci.org/Ward9250/Twiddle.jl)
+[![Build status](https://ci.appveyor.com/api/projects/status/qpu140hq8d5javre/branch/develop?svg=true)](https://ci.appveyor.com/project/Ward9250/twiddle-jl/branch/develop)

@@ -38,3 +38,6 @@ markdown_extensions:
 # Page tree
 pages:
 - Home: index.md
+- Manual:
+    - Contents: manual.md
+    - Glossary: glossary.md
