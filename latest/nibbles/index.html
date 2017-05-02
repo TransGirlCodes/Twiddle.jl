@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
-        <link rel="canonical" href="https://ward9250.github.io/Twiddle.jl/glossary/">
+        <link rel="canonical" href="https://ward9250.github.io/Twiddle.jl/nibbles/">
       
       
         <meta name="author" content="Ben J. Ward">
@@ -19,7 +19,7 @@
     
     
       
-        <title>Glossary - Twiddle.jl</title>
+        <title>Nibbles - Twiddle.jl</title>
       
     
     
@@ -84,7 +84,7 @@
                 </span>
               
             
-            Glossary
+            Nibbles
           
         </span>
       </div>
@@ -234,18 +234,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../nibbles/" title="Nibbles" class="md-nav__link">
-      Nibbles
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -256,10 +244,69 @@
       
     
     
-    <a href="./" title="Glossary" class="md-nav__link md-nav__link--active">
-      Glossary
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Nibbles
+      </label>
+    
+    <a href="./" title="Nibbles" class="md-nav__link md-nav__link--active">
+      Nibbles
     </a>
     
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-nibble" title="What is a nibble?" class="md-nav__link">
+    What is a nibble?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-would-you-want-to-manipulate-nibbles" title="Why would you want to manipulate nibbles?" class="md-nav__link">
+    Why would you want to manipulate nibbles?
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-bioinformatics" title="In Bioinformatics..." class="md-nav__link">
+    In Bioinformatics...
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../glossary/" title="Glossary" class="md-nav__link">
+      Glossary
+    </a>
   </li>
 
         
@@ -309,6 +356,40 @@
     
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-nibble" title="What is a nibble?" class="md-nav__link">
+    What is a nibble?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-would-you-want-to-manipulate-nibbles" title="Why would you want to manipulate nibbles?" class="md-nav__link">
+    Why would you want to manipulate nibbles?
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-bioinformatics" title="In Bioinformatics..." class="md-nav__link">
+    In Bioinformatics...
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -319,12 +400,78 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/Ward9250/Twiddle.jl/edit/master/docs/glossary.md" title="Edit this page" class="md-icon md-content__icon">edit</a>
+                  <a href="https://github.com/Ward9250/Twiddle.jl/edit/master/docs/nibbles.md" title="Edit this page" class="md-icon md-content__icon">edit</a>
                 
                 
-                <p><a id='Glossary-1'></a></p>
-<h1 id="glossary">Glossary</h1>
-<p>Here we clarify some terms commonly used when manipulating bits. </p>
+                <p><a id='Working-with-Nibbles-1'></a></p>
+<h1 id="working-with-nibbles">Working with Nibbles</h1>
+<p><a id='What-is-a-nibble?-1'></a></p>
+<h2 id="what-is-a-nibble">What is a nibble?</h2>
+<p>A nibble (often nybble or nyble to match the vowels of byte) is a four-bit aggregation. It is also sometimes called a half-byte or tetrade.</p>
+<p>A nibble has sixteen possible values. A nibble can be represented by a single hexadecimal digit, called a hex digit.</p>
+<p>For example, if you wanted to represent the byte 00001111, you would use two hex digits, one hex digit would represent the 0000 bits, and a second hex digit would represent the 1111 bits. So the byte - the two nibbles - are represented in hexadecimal notation as: 0x0F. The hex digit 0 = the 0000 nibble, and the hex digit F = the 1111 nibble.</p>
+<p><a id='Why-would-you-want-to-manipulate-nibbles?-1'></a></p>
+<h2 id="why-would-you-want-to-manipulate-nibbles">Why would you want to manipulate nibbles?</h2>
+<p>You might want to manipulate and work with nibbles for many different reasons.</p>
+<p><a id='In-Bioinformatics...-1'></a></p>
+<h3 id="in-bioinformatics">In Bioinformatics...</h3>
+<p>You may have some data encoded in a succinct format that stores memory and will speed up computation, but that requires manipulating bits of binary data. In the BioJulia package ecosystem, DNA sequences can be represented in a compressed format where a single nucleotide is represented with a nibble. Since many nibbles can fit in a single integer, bit parallel manipulation of such binary data allows you to do operations on many nibbles (nucleotides) at once, speeding up your computation significantly!</p>
+<p><a id='Nibble-methods-1'></a></p>
+<h1 id="nibble-methods">Nibble methods</h1>
+<p><a id='Twiddle.count_nonzero_nibbles-Tuple{UInt64}' href='#Twiddle.count_nonzero_nibbles-Tuple{UInt64}'>#</a>
+<strong><code>Twiddle.count_nonzero_nibbles</code></strong> &mdash; <em>Method</em>.</p>
+<div class="codehilite"><pre><span></span>count_nonzero_nibbles(x::UInt64)
+</pre></div>
+
+
+<p>Count the number of nibbles (aligned 4 bit segments) in an unsigned integer which have at least one bit set.</p>
+<p>E.g. An input of:</p>
+<p>0x0F11F111F11111F1</p>
+<p>Would give the answer: 15.</p>
+<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/408131b90102dcfd99c0e31da70dfc3bba481718/src/nibbles.jl#L27-L38' class='documenter-source'>source</a><br></p>
+<p><a id='Twiddle.count_one_nibbles-Tuple{UInt64}' href='#Twiddle.count_one_nibbles-Tuple{UInt64}'>#</a>
+<strong><code>Twiddle.count_one_nibbles</code></strong> &mdash; <em>Method</em>.</p>
+<div class="codehilite"><pre><span></span>count_one_nibbles(x::UInt64)
+</pre></div>
+
+
+<p>Counts the number of nibbles (aligned 4 bit segments) in a UInt64 <code>x</code> that have all their bits set i.e. all nibbles of 1111.</p>
+<p>E.g. An input of:</p>
+<p>0x0F11F111F11111F1</p>
+<p>Would give the answer: 4.</p>
+<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/408131b90102dcfd99c0e31da70dfc3bba481718/src/nibbles.jl#L64-L75' class='documenter-source'>source</a><br></p>
+<p><a id='Twiddle.count_zero_nibbles-Tuple{UInt64}' href='#Twiddle.count_zero_nibbles-Tuple{UInt64}'>#</a>
+<strong><code>Twiddle.count_zero_nibbles</code></strong> &mdash; <em>Method</em>.</p>
+<div class="codehilite"><pre><span></span>count_zero_nibbles(x::UInt64)
+</pre></div>
+
+
+<p>Counts the number of nibbles (aligned 4 bit segments) in a UInt64 <code>x</code> that have all their bits unset i.e. nibbles of 0000.</p>
+<p>E.g. An input of:</p>
+<p>0x0F11F111F11111F1</p>
+<p>Would give the answer: 1.</p>
+<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/408131b90102dcfd99c0e31da70dfc3bba481718/src/nibbles.jl#L48-L59' class='documenter-source'>source</a><br></p>
+<p><a id='Twiddle.enumerate_nibbles-Tuple{UInt64}' href='#Twiddle.enumerate_nibbles-Tuple{UInt64}'>#</a>
+<strong><code>Twiddle.enumerate_nibbles</code></strong> &mdash; <em>Method</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">enumerate_nibbles</span>(<span class="n">abxor::UInt64</span>)
+</pre></div>
+
+
+<p>Count the number of set bits in each nibble (aligned 4 bit segments) of an unsigned 64 bit integer.</p>
+<p>E.g. An input of:</p>
+<p>0100 0010 0001 0110 1100 1110 1101 1111</p>
+<p>Would result in:</p>
+<p>0001 0001 0001 0010 0010 0011 0011 0100</p>
+<p>This is used to identify different occurances of certain bit patterns.</p>
+<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/408131b90102dcfd99c0e31da70dfc3bba481718/src/nibbles.jl#L7-L21' class='documenter-source'>source</a><br></p>
+<p><a id='Twiddle.nibble_mask-Tuple{UInt64,UInt64}' href='#Twiddle.nibble_mask-Tuple{UInt64,UInt64}'>#</a>
+<strong><code>Twiddle.nibble_mask</code></strong> &mdash; <em>Method</em>.</p>
+<div class="codehilite"><pre><span></span>nibble_mask(x::UInt64, value::UInt64)
+</pre></div>
+
+
+<p>Create a mask for the nibbles (aligned 4 bit segments) in a 64 bit integer <code>x</code> that match a given value dictated by the pattern in <code>value</code>.</p>
+<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/408131b90102dcfd99c0e31da70dfc3bba481718/src/nibbles.jl#L84-L89' class='documenter-source'>source</a><br></p>
                 
                   
                 
@@ -343,7 +490,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../nibbles/" title="Nibbles" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../manual/" title="Contents" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -352,19 +499,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Nibbles
+                Contents
               </span>
             </div>
           </a>
         
         
-          <a href="../contributing/" title="Contributing" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../glossary/" title="Glossary" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Contributing
+                Glossary
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
