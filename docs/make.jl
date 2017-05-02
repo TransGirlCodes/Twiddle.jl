@@ -6,4 +6,5 @@ deploydocs(
     repo = "github.com/Ward9250/Twiddle.jl.git",
     julia = "0.5",
     osname = "linux",
+    latest = "develop"
 )
