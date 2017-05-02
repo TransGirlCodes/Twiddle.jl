@@ -7,7 +7,7 @@
 """
     enumerate_nibbles(abxor::UInt64)
 
-Count the number of set bits in each nibble of an unsigned 64 bit integer.
+Count the number of set bits in each nibble (aligned 4 bit segments) of an unsigned 64 bit integer.
 
 E.g. An input of:
 
@@ -27,7 +27,7 @@ end
 """
     count_nonzero_nibbles(x::UInt64)
 
-Count the number of nibbles in an unsigned integer which have at least one
+Count the number of nibbles (aligned 4 bit segments) in an unsigned integer which have at least one
 bit set.
 
 E.g. An input of:
@@ -48,7 +48,7 @@ end
 """
     count_zero_nibbles(x::UInt64)
 
-Counts the number of nibbles in a UInt64 `x` that have all their bits unset i.e.
+Counts the number of nibbles (aligned 4 bit segments) in a UInt64 `x` that have all their bits unset i.e.
 nibbles of 0000.
 
 E.g. An input of:
@@ -64,7 +64,7 @@ end
 """
     count_one_nibbles(x::UInt64)
 
-Counts the number of nibbles in a UInt64 `x` that have all their bits set i.e.
+Counts the number of nibbles (aligned 4 bit segments) in a UInt64 `x` that have all their bits set i.e.
 all nibbles of 1111.
 
 E.g. An input of:
@@ -84,7 +84,7 @@ end
 """
     nibble_mask(x::UInt64, value::UInt64)
 
-Create a mask for the nibbles (groups of four bits) in a 64 bit integer `x`
+Create a mask for the nibbles (aligned 4 bit segments) in a 64 bit integer `x`
 that match a given value dictated by the pattern in `value`.
 """
 @inline function nibble_mask(value::UInt64, x::UInt64)
