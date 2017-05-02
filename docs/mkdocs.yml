@@ -1,0 +1,40 @@
+# Project information
+site_name: Twiddle.jl
+site_description:
+site_author: Ben J. Ward
+site_url: https://ward9250.github.io/Twiddle.jl/
+
+# Repository
+repo_url:  https://github.com/Ward9250/Twiddle.jl
+
+# Copyright
+copyright: Copyright (c) 2017 Ben J. Ward & Luis Yanes
+
+# Documentation and theme
+theme: material
+docs_dir: 'build'
+
+# Options
+extra:
+  logo: images/biojl.png
+  author:
+    github: Ward9250
+
+extra_css:
+  - assets/Documenter.css
+
+extra_javascript:
+  - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML
+  - assets/mathjaxhelper.js
+
+# Extensions
+markdown_extensions:
+  - extra
+  - tables
+  - fenced_code
+  - codehilite
+  - def_list
+
+# Page tree
+pages:
+- Home: index.md
