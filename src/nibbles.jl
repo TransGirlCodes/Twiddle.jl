@@ -28,7 +28,13 @@ end
     count_nonzero_nibbles(x::UInt64)
 
 Count the number of nibbles in an unsigned integer which have at least one
-bit set to 1.
+bit set.
+
+E.g. An input of:
+
+0x0F11F111F11111F1
+
+Would give the answer: 15.
 """
 @inline function count_nonzero_nibbles(x::UInt64)
     out = UInt64(0)
@@ -43,7 +49,7 @@ end
     count_zero_nibbles(x::UInt64)
 
 Counts the number of nibbles in a UInt64 `x` that have all their bits unset i.e.
-all nibbles of 0000.
+nibbles of 0000.
 
 E.g. An input of:
 
@@ -63,9 +69,9 @@ all nibbles of 1111.
 
 E.g. An input of:
 
-0x00A00C200010000F
+0x0F11F111F11111F1
 
-Would give the answer: 1.
+Would give the answer: 4.
 """
 @inline function count_one_nibbles(x::UInt64)
     out = x & 0x1111111111111111
