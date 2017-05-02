@@ -2,18 +2,23 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Twiddle.jl\n\n\nTwiddle.jl is a package collecting useful bit-twiddling tricks, ready to use as functions, with detailed documentation of what they do, and example real-world use cases.\n\n\nThis package originated from a PostDoc project where we wanted to do some common biological sequence operations much much faster than a naive implementation could, by taking advantage of succinct bit-encoding of the sequences.\n\n\nThis package however is supposed to be more general, and we want it to contain many bit-twiddling tips and tricks.\n\n\n\n\nStatus", 
-            "title": "Home"
+            "text": "Twiddle.jl \nBit-twiddling tricks for Julia\n\n\nTwiddle.jl is a package collecting useful bit-twiddling tricks, ready to use as functions, with detailed documentation of what they do, and example real-world use cases.\n\n\nThis package originated from a PostDoc project where we wanted to do some common biological sequence operations much much faster than a naive implementation could, by taking advantage of succinct bit-encoding of the sequences.\n\n\nThis package however is supposed to be more general, and we want it to contain many bit-twiddling tips and tricks.\n\n\n\n\nStatus\n\n\n \n\n\n\n\nQuick Start\n\n\nInstall the latest version of Twiddle.jl from the Julia REPL:\n\n\nPkg\n.\nadd\n(\nTwiddle\n)\n\n\n\n\n\n\nINFO\n:\n \nNothing\n \nto\n \nbe\n \ndone\n\n\n\n\n\n\nTo use any functions in Twiddle, you must \nfully qualify\n the name e.g.\n\n\nusing\n \nTwiddle\n\n\n\nTwiddle\n.\ncount_nonzero_nibbles\n(\n0x0F11F111F11111F1\n)\n\n\n\n\n\n\n15", 
+            "title": "Twiddle"
         }, 
         {
-            "location": "/#twiddlejl", 
+            "location": "/#twiddlejl-bit-twiddling-tricks-for-julia", 
             "text": "Twiddle.jl is a package collecting useful bit-twiddling tricks, ready to use as functions, with detailed documentation of what they do, and example real-world use cases.  This package originated from a PostDoc project where we wanted to do some common biological sequence operations much much faster than a naive implementation could, by taking advantage of succinct bit-encoding of the sequences.  This package however is supposed to be more general, and we want it to contain many bit-twiddling tips and tricks.", 
-            "title": "Twiddle.jl"
+            "title": "Twiddle.jl Bit-twiddling tricks for Julia"
         }, 
         {
             "location": "/#status", 
             "text": "", 
             "title": "Status"
+        }, 
+        {
+            "location": "/#quick-start", 
+            "text": "Install the latest version of Twiddle.jl from the Julia REPL:  Pkg . add ( Twiddle )   INFO :   Nothing   to   be   done   To use any functions in Twiddle, you must  fully qualify  the name e.g.  using   Twiddle  Twiddle . count_nonzero_nibbles ( 0x0F11F111F11111F1 )   15", 
+            "title": "Quick Start"
         }, 
         {
             "location": "/manual/", 
@@ -34,6 +39,21 @@
             "location": "/glossary/#glossary", 
             "text": "Here we clarify some terms commonly used when manipulating bits.", 
             "title": "Glossary"
+        }, 
+        {
+            "location": "/contributing/", 
+            "text": "Contributing\n\n\nWe welcome contributions of all kinds.\n\n\nTo make a contribution simply fork this repository, make your changes, and then make a pull request.\n\n\nPlease note that we use the git-flow branching model for this repository and so please ensure your pull request are made to the 'develop' branch as the reference branch you are to merge your changes into.", 
+            "title": "Contributing"
+        }, 
+        {
+            "location": "/contributing/#contributing", 
+            "text": "We welcome contributions of all kinds.  To make a contribution simply fork this repository, make your changes, and then make a pull request.  Please note that we use the git-flow branching model for this repository and so please ensure your pull request are made to the 'develop' branch as the reference branch you are to merge your changes into.", 
+            "title": "Contributing"
+        }, 
+        {
+            "location": "/license/", 
+            "text": "MIT License\n\n\nCopyright (c) 2017 Ben J. Ward \n Luis Yanes\n\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.", 
+            "title": "Licence"
         }
     ]
 }

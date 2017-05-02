@@ -67,8 +67,7 @@
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
         
-          <a href="https://ward9250.github.io/Twiddle.jl/" title="Twiddle.jl" class="md-logo md-header-nav__button">
-            <img src="./images/biojl.png" width="24" height="24">
+          <a href="https://ward9250.github.io/Twiddle.jl/" title="Twiddle.jl" class="md-icon md-icon--home md-header-nav__button">
           </a>
         
       </div>
@@ -81,7 +80,7 @@
             
               
             
-            Home
+            Twiddle
           
         </span>
       </div>
@@ -153,9 +152,7 @@
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="drawer">
     
-      <i class="md-logo md-nav__button">
-        <img src="./images/biojl.png">
-      </i>
+      <i class="md-icon md-icon--home md-nav__button"></i>
     
     Twiddle.jl
   </label>
@@ -199,11 +196,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        Home
+        Twiddle
       </label>
     
-    <a href="." title="Home" class="md-nav__link md-nav__link--active">
-      Home
+    <a href="." title="Twiddle" class="md-nav__link md-nav__link--active">
+      Twiddle
     </a>
     
       
@@ -219,6 +216,13 @@
         <li class="md-nav__item">
   <a href="#status" title="Status" class="md-nav__link">
     Status
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" title="Quick Start" class="md-nav__link">
+    Quick Start
   </a>
   
 </li>
@@ -280,6 +284,30 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="contributing/" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="license/" title="Licence" class="md-nav__link">
+      Licence
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -307,6 +335,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#quick-start" title="Quick Start" class="md-nav__link">
+    Quick Start
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -324,14 +359,34 @@
                   <a href="https://github.com/Ward9250/Twiddle.jl/edit/master/docs/index.md" title="Edit this page" class="md-icon md-content__icon">edit</a>
                 
                 
-                <p><a id='Twiddle.jl-1'></a></p>
-<h1 id="twiddlejl">Twiddle.jl</h1>
+                <p><a id='Twiddle.jl-smallBit-twiddling-tricks-for-Julia/small-1'></a></p>
+<h1 id="twiddlejl-bit-twiddling-tricks-for-julia">Twiddle.jl <small>Bit-twiddling tricks for Julia</small></h1>
 <p>Twiddle.jl is a package collecting useful bit-twiddling tricks, ready to use as functions, with detailed documentation of what they do, and example real-world use cases.</p>
 <p>This package originated from a PostDoc project where we wanted to do some common biological sequence operations much much faster than a naive implementation could, by taking advantage of succinct bit-encoding of the sequences.</p>
 <p>This package however is supposed to be more general, and we want it to contain many bit-twiddling tips and tricks.</p>
 <p><a id='Status-1'></a></p>
 <h2 id="status">Status</h2>
 <p><a href="https://travis-ci.org/Ward9250/Twiddle.jl"><img alt="Build Status" src="https://travis-ci.org/Ward9250/Twiddle.jl.svg?branch=develop" /></a> <a href="https://ci.appveyor.com/project/Ward9250/twiddle-jl/branch/develop"><img alt="Build status" src="https://ci.appveyor.com/api/projects/status/qpu140hq8d5javre/branch/develop?svg=true" /></a></p>
+<p><a id='Quick-Start-1'></a></p>
+<h2 id="quick-start">Quick Start</h2>
+<p>Install the latest version of Twiddle.jl from the Julia REPL:</p>
+<div class="codehilite"><pre><span></span><span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;Twiddle&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="n">INFO</span><span class="o">:</span> <span class="n">Nothing</span> <span class="n">to</span> <span class="n">be</span> <span class="n">done</span>
+</pre></div>
+
+
+<p>To use any functions in Twiddle, you must <em>fully qualify</em> the name e.g.</p>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">Twiddle</span>
+
+<span class="n">Twiddle</span><span class="o">.</span><span class="n">count_nonzero_nibbles</span><span class="p">(</span><span class="mh">0x0F11F111F11111F1</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>15
+</pre></div>
                 
                   
                 
