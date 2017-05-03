@@ -1,0 +1,89 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Twiddle.jl \nBit-twiddling tricks for Julia\n\n\nTwiddle.jl is a package collecting useful bit-twiddling tricks, ready to use as functions, with detailed documentation of what they do, and example real-world use cases.\n\n\nThis package originated from a PostDoc project where we wanted to do some common biological sequence operations much much faster than a naive implementation could, by taking advantage of succinct bit-encoding of the sequences.\n\n\nThis package however is supposed to be more general, and we want it to contain many bit-twiddling tips and tricks.\n\n\n\n\nStatus\n\n\n \n\n\n\n\nQuick Start\n\n\nInstall the latest version of Twiddle.jl from the Julia REPL:\n\n\nPkg\n.\nadd\n(\nTwiddle\n)\n\n\n\n\n\n\nINFO\n:\n \nNothing\n \nto\n \nbe\n \ndone\n\n\n\n\n\n\nTo use any functions in Twiddle, you must \nfully qualify\n the name e.g.\n\n\nusing\n \nTwiddle\n\n\n\nTwiddle\n.\ncount_nonzero_nibbles\n(\n0x0F11F111F11111F1\n)\n\n\n\n\n\n\n15", 
+            "title": "Twiddle"
+        }, 
+        {
+            "location": "/#twiddlejl-bit-twiddling-tricks-for-julia", 
+            "text": "Twiddle.jl is a package collecting useful bit-twiddling tricks, ready to use as functions, with detailed documentation of what they do, and example real-world use cases.  This package originated from a PostDoc project where we wanted to do some common biological sequence operations much much faster than a naive implementation could, by taking advantage of succinct bit-encoding of the sequences.  This package however is supposed to be more general, and we want it to contain many bit-twiddling tips and tricks.", 
+            "title": "Twiddle.jl Bit-twiddling tricks for Julia"
+        }, 
+        {
+            "location": "/#status", 
+            "text": "", 
+            "title": "Status"
+        }, 
+        {
+            "location": "/#quick-start", 
+            "text": "Install the latest version of Twiddle.jl from the Julia REPL:  Pkg . add ( Twiddle )   INFO :   Nothing   to   be   done   To use any functions in Twiddle, you must  fully qualify  the name e.g.  using   Twiddle  Twiddle . count_nonzero_nibbles ( 0x0F11F111F11111F1 )   15", 
+            "title": "Quick Start"
+        }, 
+        {
+            "location": "/manual/", 
+            "text": "Manual\n\n\n\n\nWorking with Nibbles\n\n\nWhat is a nibble?\n\n\nWhy would you want to manipulate nibbles?\n\n\nIn Bioinformatics...\n\n\n\n\n\n\n\n\n\n\nNibble methods\n\n\nGlossary", 
+            "title": "Contents"
+        }, 
+        {
+            "location": "/manual/#manual", 
+            "text": "Working with Nibbles  What is a nibble?  Why would you want to manipulate nibbles?  In Bioinformatics...      Nibble methods  Glossary", 
+            "title": "Manual"
+        }, 
+        {
+            "location": "/nibbles/", 
+            "text": "Working with Nibbles\n\n\n\n\nWhat is a nibble?\n\n\nA nibble (often nybble or nyble to match the vowels of byte) is a four-bit aggregation. It is also sometimes called a half-byte or tetrade.\n\n\nA nibble has sixteen possible values. A nibble can be represented by a single hexadecimal digit, called a hex digit.\n\n\nFor example, if you wanted to represent the byte 00001111, you would use two hex digits, one hex digit would represent the 0000 bits, and a second hex digit would represent the 1111 bits. So the byte - the two nibbles - are represented in hexadecimal notation as: 0x0F. The hex digit 0 = the 0000 nibble, and the hex digit F = the 1111 nibble.\n\n\n\n\nWhy would you want to manipulate nibbles?\n\n\n\n\nIn Bioinformatics...\n\n\nYou may have some data encoded in a succinct format that stores memory and will speed up computation, but that requires manipulating bits of binary data.\n\n\nIn the BioJulia package ecosystem, DNA sequences can be represented in a compressed format where a single nucleotide is represented with a nibble.\n\n\nSince many nibbles can fit in a single integer, bit parallel manipulation of such binary data allows you to do operations on many nibbles (nucleotides) at once, speeding up your computation significantly!\n\n\n\n\nNibble methods\n\n\n#\n\n\nTwiddle.count_nonzero_nibbles\n \n \nMethod\n.\n\n\ncount_nonzero_nibbles(x::UInt64)\n\n\n\n\n\nCount the number of nibbles (aligned 4 bit segments) in an unsigned integer which have at least one bit set.\n\n\nE.g. An input of:\n\n\n0x0F11F111F11111F1\n\n\nWould give the answer: 15.\n\n\nsource\n\n\n#\n\n\nTwiddle.count_one_nibbles\n \n \nMethod\n.\n\n\ncount_one_nibbles(x::UInt64)\n\n\n\n\n\nCounts the number of nibbles (aligned 4 bit segments) in a UInt64 \nx\n that have all their bits set i.e. all nibbles of 1111.\n\n\nE.g. An input of:\n\n\n0x0F11F111F11111F1\n\n\nWould give the answer: 4.\n\n\nsource\n\n\n#\n\n\nTwiddle.count_zero_nibbles\n \n \nMethod\n.\n\n\ncount_zero_nibbles(x::UInt64)\n\n\n\n\n\nCounts the number of nibbles (aligned 4 bit segments) in a UInt64 \nx\n that have all their bits unset i.e. nibbles of 0000.\n\n\nE.g. An input of:\n\n\n0x0F11F111F11111F1\n\n\nWould give the answer: 1.\n\n\nsource\n\n\n#\n\n\nTwiddle.enumerate_nibbles\n \n \nMethod\n.\n\n\nenumerate_nibbles\n(\nabxor::UInt64\n)\n\n\n\n\n\nCount the number of set bits in each nibble (aligned 4 bit segments) of an unsigned 64 bit integer.\n\n\nE.g. An input of:\n\n\n0100 0010 0001 0110 1100 1110 1101 1111\n\n\nWould result in:\n\n\n0001 0001 0001 0010 0010 0011 0011 0100\n\n\nThis is used to identify different occurances of certain bit patterns.\n\n\nsource\n\n\n#\n\n\nTwiddle.nibble_mask\n \n \nMethod\n.\n\n\nnibble_mask(x::UInt64, value::UInt64)\n\n\n\n\n\nCreate a mask for the nibbles (aligned 4 bit segments) in a 64 bit integer \nx\n that match a given value dictated by the pattern in \nvalue\n.\n\n\nsource", 
+            "title": "Working with Nibbles"
+        }, 
+        {
+            "location": "/nibbles/#working-with-nibbles", 
+            "text": "", 
+            "title": "Working with Nibbles"
+        }, 
+        {
+            "location": "/nibbles/#what-is-a-nibble", 
+            "text": "A nibble (often nybble or nyble to match the vowels of byte) is a four-bit aggregation. It is also sometimes called a half-byte or tetrade.  A nibble has sixteen possible values. A nibble can be represented by a single hexadecimal digit, called a hex digit.  For example, if you wanted to represent the byte 00001111, you would use two hex digits, one hex digit would represent the 0000 bits, and a second hex digit would represent the 1111 bits. So the byte - the two nibbles - are represented in hexadecimal notation as: 0x0F. The hex digit 0 = the 0000 nibble, and the hex digit F = the 1111 nibble.", 
+            "title": "What is a nibble?"
+        }, 
+        {
+            "location": "/nibbles/#why-would-you-want-to-manipulate-nibbles", 
+            "text": "", 
+            "title": "Why would you want to manipulate nibbles?"
+        }, 
+        {
+            "location": "/nibbles/#in-bioinformatics", 
+            "text": "You may have some data encoded in a succinct format that stores memory and will speed up computation, but that requires manipulating bits of binary data.  In the BioJulia package ecosystem, DNA sequences can be represented in a compressed format where a single nucleotide is represented with a nibble.  Since many nibbles can fit in a single integer, bit parallel manipulation of such binary data allows you to do operations on many nibbles (nucleotides) at once, speeding up your computation significantly!", 
+            "title": "In Bioinformatics..."
+        }, 
+        {
+            "location": "/nibbles/#nibble-methods", 
+            "text": "#  Twiddle.count_nonzero_nibbles     Method .  count_nonzero_nibbles(x::UInt64)  Count the number of nibbles (aligned 4 bit segments) in an unsigned integer which have at least one bit set.  E.g. An input of:  0x0F11F111F11111F1  Would give the answer: 15.  source  #  Twiddle.count_one_nibbles     Method .  count_one_nibbles(x::UInt64)  Counts the number of nibbles (aligned 4 bit segments) in a UInt64  x  that have all their bits set i.e. all nibbles of 1111.  E.g. An input of:  0x0F11F111F11111F1  Would give the answer: 4.  source  #  Twiddle.count_zero_nibbles     Method .  count_zero_nibbles(x::UInt64)  Counts the number of nibbles (aligned 4 bit segments) in a UInt64  x  that have all their bits unset i.e. nibbles of 0000.  E.g. An input of:  0x0F11F111F11111F1  Would give the answer: 1.  source  #  Twiddle.enumerate_nibbles     Method .  enumerate_nibbles ( abxor::UInt64 )  Count the number of set bits in each nibble (aligned 4 bit segments) of an unsigned 64 bit integer.  E.g. An input of:  0100 0010 0001 0110 1100 1110 1101 1111  Would result in:  0001 0001 0001 0010 0010 0011 0011 0100  This is used to identify different occurances of certain bit patterns.  source  #  Twiddle.nibble_mask     Method .  nibble_mask(x::UInt64, value::UInt64)  Create a mask for the nibbles (aligned 4 bit segments) in a 64 bit integer  x  that match a given value dictated by the pattern in  value .  source", 
+            "title": "Nibble methods"
+        }, 
+        {
+            "location": "/glossary/", 
+            "text": "Glossary\n\n\nHere we clarify some terms commonly used when manipulating bits.", 
+            "title": "Glossary"
+        }, 
+        {
+            "location": "/glossary/#glossary", 
+            "text": "Here we clarify some terms commonly used when manipulating bits.", 
+            "title": "Glossary"
+        }, 
+        {
+            "location": "/contributing/", 
+            "text": "Contributing\n\n\nWe welcome contributions of all kinds.\n\n\nTo make a contribution simply fork this repository, make your changes, and then make a pull request.\n\n\nPlease note that we use the git-flow branching model for this repository and so please ensure your pull request are made to the 'develop' branch as the reference branch you are to merge your changes into.", 
+            "title": "Contributing"
+        }, 
+        {
+            "location": "/contributing/#contributing", 
+            "text": "We welcome contributions of all kinds.  To make a contribution simply fork this repository, make your changes, and then make a pull request.  Please note that we use the git-flow branching model for this repository and so please ensure your pull request are made to the 'develop' branch as the reference branch you are to merge your changes into.", 
+            "title": "Contributing"
+        }, 
+        {
+            "location": "/license/", 
+            "text": "MIT License\n\n\nCopyright (c) 2017 Ben J. Ward \n Luis Yanes\n\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.", 
+            "title": "Licence"
+        }
+    ]
+}
