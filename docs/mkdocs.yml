@@ -39,7 +39,7 @@ pages:
 - Twiddle: index.md
 - Manual:
     - Contents: manual.md
-    - Nibbles: nibbles.md
+    - Working with Nibbles: nibbles.md
     - Glossary: glossary.md
 - Contributing: contributing.md
 - Licence: license.md
