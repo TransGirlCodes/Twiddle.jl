@@ -1,4 +1,4 @@
-# Twiddle.jl
+# Twiddle.jl <small>Bit-twiddling tricks for Julia</small>
 
 Twiddle.jl is a package collecting useful bit-twiddling tricks, ready to use as
 functions, with detailed documentation of what they do, and example real-world
@@ -16,7 +16,18 @@ many bit-twiddling tips and tricks.
 [![Build Status](https://travis-ci.org/Ward9250/Twiddle.jl.svg?branch=develop)](https://travis-ci.org/Ward9250/Twiddle.jl)
 [![Build status](https://ci.appveyor.com/api/projects/status/qpu140hq8d5javre/branch/develop?svg=true)](https://ci.appveyor.com/project/Ward9250/twiddle-jl/branch/develop)
 
-## Documentation
+## Quick Start
 
-[![](https://img.shields.io/badge/docs-stable-blue.svg)](https://Ward9250.github.io/Twiddle.jl/stable)
-[![](https://img.shields.io/badge/docs-latest-blue.svg)](https://Ward9250.github.io/Twiddle.jl/latest)
+Install the latest version of Twiddle.jl from the Julia REPL:
+
+```@example qs
+Pkg.add("Twiddle")
+```
+
+To use any functions in Twiddle, you must _fully qualify_ the name e.g.
+
+```@example qs
+using Twiddle
+
+Twiddle.count_nonzero_nibbles(0x0F11F111F11111F1)
+```
