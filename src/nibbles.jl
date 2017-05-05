@@ -9,6 +9,10 @@ License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/.
 =#
 
+@inline function nibble_capacity{T<:Unsigned}(::Type{T})
+    return sizeof(T) * 2
+end
+
 """
     enumerate_nibbles{T<:Unsigned}(x::T)
 
@@ -64,7 +68,7 @@ E.g. An input of:
 Would give the answer: 1.
 """
 @inline function count_zero_nibbles{T<:Unsigned}(x::T)
-    return 16 - count_nonzero_nibbles(x)
+    return nibble_capacity(T) - count_nonzero_nibbles(x)
 end
 
 """
@@ -102,10 +106,6 @@ that match a given value dictated by the pattern in `value`.
     # AND removes junk, we then widen x by multiplication and return
     # the inverse.
     x &= repeatbyte(T, 0x11)
-    x *= 15
+    x *= 0x0F
     return ~x
-end
-
-@inline function nibble_mask{T<:Unsigned}(value::UInt8, x::T)
-    return nibble_mask(repeatbyte(T, value), x)
 end

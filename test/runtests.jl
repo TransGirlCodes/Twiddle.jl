@@ -49,11 +49,14 @@ end
 end
 
 @testset "Masking nibbles" begin
-    @test Twiddle.nibble_mask(0xDD, 0x18) == 0x00
-    @test Twiddle.nibble_mask(0xDD, 0x185D) == 0x000F
-    @test Twiddle.nibble_mask(0xDD, 0x185DF69C) == 0x000F0000
-    @test Twiddle.nibble_mask(0xDD, 0x185DF69C185DF69C) == 0x000F0000000F0000
-    @test Twiddle.nibble_mask(0xDD, 0x185DF69C185DF69C185DF69C185DF69C) == 0x000F0000000F0000000F0000000F0000
+    args = [(UInt8, 0x18, 0x00),
+            (UInt16, 0x185D, 0x000F),
+            (UInt32, 0x185DF69C, 0x000F0000),
+            (UInt64, 0x185DF69C185DF69C, 0x000F0000000F0000),
+            (UInt128, 0x185DF69C185DF69C185DF69C185DF69C, 0x000F0000000F0000000F0000000F0000)]
+    for arg in args
+        @test Twiddle.nibble_mask(Twiddle.repeatbyte(arg[1], 0xDD), arg[2]) == arg[3]
+    end
 end
 
 end
