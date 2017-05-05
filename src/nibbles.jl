@@ -24,9 +24,9 @@ Would result in:
 
 This is used to identify different occurances of certain bit patterns.
 """
-@inline function enumerate_nibbles(x::UInt64)
-    x = x - ((x >> 1) & 0x5555555555555555)
-    return (x & 0x3333333333333333) + ((x >> 2) & 0x3333333333333333)
+@inline function enumerate_nibbles{T<:Unsigned}(x::T)
+    x = x - ((x >> 1) & repeatbyte(T,0x55))
+    return (x & repeatbyte(T,0x33)) + ((x >> 2) & repeatbyte(T,0x33))
 end
 
 """
