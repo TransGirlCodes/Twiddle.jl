@@ -429,7 +429,7 @@
 <p>E.g. An input of:</p>
 <p>0x0F11F111F11111F1</p>
 <p>Would give the answer: 15.</p>
-<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/8b70d921d867e65435847fa65f57bef29b4a4c07/src/nibbles.jl#L32-L43' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/fe53c17ee3dbbb006aad6d3ffc4e9bae02cc44d8/src/nibbles.jl#L32-L43' class='documenter-source'>source</a><br></p>
 <p><a id='Twiddle.count_one_nibbles-Tuple{UInt64}' href='#Twiddle.count_one_nibbles-Tuple{UInt64}'>#</a>
 <strong><code>Twiddle.count_one_nibbles</code></strong> &mdash; <em>Method</em>.</p>
 <div class="codehilite"><pre><span></span>count_one_nibbles(x::UInt64)
@@ -440,7 +440,7 @@
 <p>E.g. An input of:</p>
 <p>0x0F11F111F11111F1</p>
 <p>Would give the answer: 4.</p>
-<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/8b70d921d867e65435847fa65f57bef29b4a4c07/src/nibbles.jl#L69-L80' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/fe53c17ee3dbbb006aad6d3ffc4e9bae02cc44d8/src/nibbles.jl#L69-L80' class='documenter-source'>source</a><br></p>
 <p><a id='Twiddle.count_zero_nibbles-Tuple{UInt64}' href='#Twiddle.count_zero_nibbles-Tuple{UInt64}'>#</a>
 <strong><code>Twiddle.count_zero_nibbles</code></strong> &mdash; <em>Method</em>.</p>
 <div class="codehilite"><pre><span></span>count_zero_nibbles(x::UInt64)
@@ -451,7 +451,7 @@
 <p>E.g. An input of:</p>
 <p>0x0F11F111F11111F1</p>
 <p>Would give the answer: 1.</p>
-<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/8b70d921d867e65435847fa65f57bef29b4a4c07/src/nibbles.jl#L53-L64' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/fe53c17ee3dbbb006aad6d3ffc4e9bae02cc44d8/src/nibbles.jl#L53-L64' class='documenter-source'>source</a><br></p>
 <p><a id='Twiddle.enumerate_nibbles-Tuple{UInt64}' href='#Twiddle.enumerate_nibbles-Tuple{UInt64}'>#</a>
 <strong><code>Twiddle.enumerate_nibbles</code></strong> &mdash; <em>Method</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">enumerate_nibbles</span>(<span class="n">abxor::UInt64</span>)
@@ -464,7 +464,7 @@
 <p>Would result in:</p>
 <p>0001 0001 0001 0010 0010 0011 0011 0100</p>
 <p>This is used to identify different occurances of certain bit patterns.</p>
-<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/8b70d921d867e65435847fa65f57bef29b4a4c07/src/nibbles.jl#L12-L26' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/fe53c17ee3dbbb006aad6d3ffc4e9bae02cc44d8/src/nibbles.jl#L12-L26' class='documenter-source'>source</a><br></p>
 <p><a id='Twiddle.nibble_mask-Tuple{UInt64,UInt64}' href='#Twiddle.nibble_mask-Tuple{UInt64,UInt64}'>#</a>
 <strong><code>Twiddle.nibble_mask</code></strong> &mdash; <em>Method</em>.</p>
 <div class="codehilite"><pre><span></span>nibble_mask(x::UInt64, value::UInt64)
@@ -472,7 +472,7 @@
 
 
 <p>Create a mask for the nibbles (aligned 4 bit segments) in a 64 bit integer <code>x</code> that match a given value dictated by the pattern in <code>value</code>.</p>
-<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/8b70d921d867e65435847fa65f57bef29b4a4c07/src/nibbles.jl#L89-L94' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/fe53c17ee3dbbb006aad6d3ffc4e9bae02cc44d8/src/nibbles.jl#L89-L94' class='documenter-source'>source</a><br></p>
 <p><a id='Twiddle.repeatbyte-Tuple{Type{T<:Unsigned},UInt8}' href='#Twiddle.repeatbyte-Tuple{Type{T<:Unsigned},UInt8}'>#</a>
 <strong><code>Twiddle.repeatbyte</code></strong> &mdash; <em>Method</em>.</p>
 <div class="codehilite"><pre><span></span>repeatbyte{T&lt;:Unsigned}(::Type{T}, byte::UInt8)
@@ -502,7 +502,7 @@
 
 
 <p>You might expect this to be less efficient - <code>repeatbyte</code> uses several operations to generate the values 0x33, 0x3333 and so on, whereas in the seperate methods, those literal values are hard coded. However, thanks to constant folding during compilation, those operations are done once at compilation time and so the native instructions generated are identical.</p>
-<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/8b70d921d867e65435847fa65f57bef29b4a4c07/src/Twiddle.jl#L11-L52' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/Ward9250/Twiddle.jl/tree/fe53c17ee3dbbb006aad6d3ffc4e9bae02cc44d8/src/Twiddle.jl#L11-L52' class='documenter-source'>source</a><br></p>
                 
                   
                 
