@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/qpu140hq8d5javre/branch/develop?svg=true)](https://ci.appveyor.com/project/Ward9250/twiddle-jl/branch/develop)
 [![Latest Release](https://img.shields.io/github/release/Ward9250/Twiddle.jl.svg)](https://github.com/Ward9250/Twiddle.jl/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/Ward9250/Twiddle.jl/total.svg)](https://github.com/Ward9250/Twiddle.jl/releases/latest)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/Ward9250/Twiddle.jl/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-MPL-green.svg)](https://github.com/Ward9250/Twiddle.jl/blob/master/LICENSE)
 [![](https://img.shields.io/badge/docs-stable-blue.svg)](https://Ward9250.github.io/Twiddle.jl/stable)
 [![](https://img.shields.io/badge/docs-latest-blue.svg)](https://Ward9250.github.io/Twiddle.jl/latest)
 

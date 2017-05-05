@@ -12,7 +12,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 """
     enumerate_nibbles(abxor::UInt64)
 
-Count the number of set bits in each nibble (aligned 4 bit segments) of an unsigned 64 bit integer.
+Count the number of set bits in each nibble (aligned 4 bit segments) of an unsigned integer.
 
 E.g. An input of:
 
@@ -24,9 +24,9 @@ Would result in:
 
 This is used to identify different occurances of certain bit patterns.
 """
-@inline function enumerate_nibbles(x::UInt64)
-    x = x - ((x >> 1) & 0x5555555555555555)
-    return (x & 0x3333333333333333) + ((x >> 2) & 0x3333333333333333)
+@inline function enumerate_nibbles{T<:Unsigned}(x::T)
+    x = x - ((x >> 1) & repeatbyte(T,0x55))
+    return (x & repeatbyte(T,0x33)) + ((x >> 2) & repeatbyte(T,0x33))
 end
 
 """
