@@ -9,6 +9,12 @@ License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/.
 =#
 
+"""
+    nibble_capacity{T<:Unsigned}(::Type{T})
+
+Returns the number of nibbles that an unsigned integer of type `T`
+holds. This is essentially twice the size of the type (in bytes).
+"""
 @inline function nibble_capacity{T<:Unsigned}(::Type{T})
     return sizeof(T) * 2
 end
@@ -16,7 +22,8 @@ end
 """
     enumerate_nibbles{T<:Unsigned}(x::T)
 
-Count the number of set bits in each nibble (aligned 4 bit segments) of an unsigned integer.
+Count the number of set bits in each nibble (aligned 4 bit segments) of an
+unsigned integer `x`.
 
 E.g. An input of:
 
@@ -36,7 +43,7 @@ end
 """
     count_nonzero_nibbles{T<:Unsigned}(x::T)
 
-Count the number of nibbles (aligned 4 bit segments) in an unsigned integer
+Count the number of nibbles (aligned 4 bit segments) in an unsigned integer `x`
 which have at least one bit set.
 
 E.g. An input of:
@@ -74,8 +81,8 @@ end
 """
     count_one_nibbles{T<:Unsigned}(x::T)
 
-Counts the number of nibbles (aligned 4 bit segments) in a UInt64 `x` that have all their bits set i.e.
-all nibbles of 1111.
+Counts the number of nibbles (aligned 4 bit segments) in an unsigned integer `x`
+that have all their bits set i.e. counts all nibbles of 1111 in an integer.
 
 E.g. An input of:
 
@@ -94,8 +101,8 @@ end
 """
     nibble_mask{T<:Unsigned}(value::T, x::T)
 
-Create a mask for the nibbles (aligned 4 bit segments) in a 64 bit integer `x`
-that match a given value dictated by the pattern in `value`.
+Create a mask for the nibbles (aligned 4 bit segments) in an unsigned integer
+`x` that filter nibbles matching the corresponding nibble in `value`.
 """
 @inline function nibble_mask{T<:Unsigned}(value::T, x::T)
     # XOR with the desired values. So matching nibbles will be 0000.
