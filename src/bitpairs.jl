@@ -1,8 +1,13 @@
-# Bitpair operations
-# ==================
-#
-# Copyright Ben J. Ward and Luis Yanes.
-# License is MIT.
+#=
+Bitpair operations
+==================
+
+Copyright (c) 2017 Ben J. Ward & Luis Yanes
+
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+=#
 
 @inline function count_nonzero_bitpairs(x::UInt64)
     out = x & 0x5555555555555555
