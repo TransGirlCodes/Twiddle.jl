@@ -2,18 +2,13 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Twiddle.jl \nBit-twiddling tricks for Julia\n\n\nTwiddle.jl is a package collecting useful bit-twiddling tricks, ready to use as functions, with detailed documentation of what they do, and example real-world use cases.\n\n\nThis package originated from a PostDoc project where we wanted to do some common biological sequence operations much much faster than a naive implementation could, by taking advantage of succinct bit-encoding of the sequences.\n\n\nThis package however is supposed to be more general, and we want it to contain many bit-twiddling tips and tricks.\n\n\n\n\nStatus\n\n\n \n\n\n\n\nQuick Start\n\n\nInstall the latest version of Twiddle.jl from the Julia REPL:\n\n\nPkg\n.\nadd\n(\nTwiddle\n)\n\n\n\n\n\n\nINFO\n:\n \nNothing\n \nto\n \nbe\n \ndone\n\n\n\n\n\n\nTo use any functions in Twiddle, you must \nfully qualify\n the name e.g.\n\n\nusing\n \nTwiddle\n\n\n\nTwiddle\n.\ncount_nonzero_nibbles\n(\n0x0F11F111F11111F1\n)\n\n\n\n\n\n\n15", 
+            "text": "Twiddle.jl \nBit-twiddling tricks for Julia\n\n\n \n \n \n \n \n \n\n\nTwiddle.jl is a package collecting useful bit-twiddling tricks, ready to use as functions, with detailed documentation of what they do, and example real-world use cases.\n\n\nThis package originated from a PostDoc project where we wanted to do some common biological sequence operations much much faster than a naive implementation could, by taking advantage of succinct bit-encoding of the sequences.\n\n\nThis package however is supposed to be more general, and we want it to contain many bit-twiddling tips and tricks.\n\n\n\n\nQuick Start\n\n\nInstall the latest version of Twiddle.jl from the Julia REPL:\n\n\nPkg\n.\nadd\n(\nTwiddle\n)\n\n\n\n\n\n\nINFO\n:\n \nNothing\n \nto\n \nbe\n \ndone\n\n\n\n\n\n\nTo use any functions in Twiddle, you must \nfully qualify\n the name e.g.\n\n\nusing\n \nTwiddle\n\n\n\nTwiddle\n.\ncount_nonzero_nibbles\n(\n0x0F11F111F11111F1\n)\n\n\n\n\n\n\n15", 
             "title": "Twiddle"
         }, 
         {
             "location": "/#twiddlejl-bit-twiddling-tricks-for-julia", 
             "text": "Twiddle.jl is a package collecting useful bit-twiddling tricks, ready to use as functions, with detailed documentation of what they do, and example real-world use cases.  This package originated from a PostDoc project where we wanted to do some common biological sequence operations much much faster than a naive implementation could, by taking advantage of succinct bit-encoding of the sequences.  This package however is supposed to be more general, and we want it to contain many bit-twiddling tips and tricks.", 
             "title": "Twiddle.jl Bit-twiddling tricks for Julia"
-        }, 
-        {
-            "location": "/#status", 
-            "text": "", 
-            "title": "Status"
         }, 
         {
             "location": "/#quick-start", 
