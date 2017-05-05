@@ -48,34 +48,7 @@ You might expect this to be less efficient - `repeatbyte` uses several operation
 to generate the values 0x33, 0x3333 and so on, whereas in the seperate methods,
 those literal values are hard coded. However, thanks to constant folding during
 compilation, those operations are done once at compilation time and so the
-native instructions generated are identical:
-
-```jlcon
-julia> @code_native f(0xFFFFFFFF)
-	.section	__TEXT,__text,regular,pure_instructions
-Filename: REPL[3]
-	pushq	%rbp
-	movq	%rsp, %rbp
-Source line: 1
-	andl	$858993459, %edi        ## imm = 0x33333333
-	movl	%edi, %eax
-	popq	%rbp
-	retq
-	nop
-
-julia> @code_native f2(0xFFFFFFFF)
-	.section	__TEXT,__text,regular,pure_instructions
-Filename: REPL[10]
-	pushq	%rbp
-	movq	%rsp, %rbp
-Source line: 1
-	andl	$858993459, %edi        ## imm = 0x33333333
-	movl	%edi, %eax
-	popq	%rbp
-	retq
-	nop
-```
-
+native instructions generated are identical.
 """
 @inline function repeatbyte{T<:Unsigned}(::Type{T}, byte::UInt8)
     return div(typemax(T), 0xff) * byte
