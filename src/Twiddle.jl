@@ -56,6 +56,23 @@ native instructions generated are identical.
     return div(typemax(T), 0xff) * byte
 end
 
+"""
+    mask{T<:Unsigned}(::Type{T}, n::Integer)
+
+Creates a bit mask for given number of bits `n`.
+
+The mask starts from the least significant bit, and end at bit `n`.
+
+e.g:
+
+```jldoctest
+julia> mask(UInt64, 8)
+0x00000000000000ff
+```
+"""
+mask{T<:Unsigned}(::Type{T}, n::Integer) = (T(1) << n) - 0x1
+mask(n::Integer) = mask(UInt64, n)
+
 include("nibbles.jl")
 include("bitpairs.jl")
 
