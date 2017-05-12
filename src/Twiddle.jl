@@ -66,7 +66,7 @@ The mask starts from the least significant bit, and end at bit `n`.
 e.g:
 
 ```jldoctest
-julia> mask(UInt64, 8)
+julia> Twiddle.mask(UInt64, 8)
 0x00000000000000ff
 ```
 """
