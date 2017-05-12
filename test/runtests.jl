@@ -59,4 +59,10 @@ end
     end
 end
 
+@testset "masking bits" begin
+    @test mask(UInt64, 12) == 0x0000000000000fff
+    @test mask(13) == 0x0000000000001fff
+    @test mask(UInt16, 9) == 0x01ff
+end
+
 end
