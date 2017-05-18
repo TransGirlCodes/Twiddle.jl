@@ -3,7 +3,7 @@
 [![Latest Release](https://img.shields.io/github/release/Ward9250/Twiddle.jl.svg)](https://github.com/Ward9250/Twiddle.jl/releases/latest)
 [![Twiddle](http://pkg.julialang.org/badges/Twiddle_0.5.svg)](http://pkg.julialang.org/?pkg=Twiddle)
 [![Twiddle](http://pkg.julialang.org/badges/Twiddle_0.6.svg)](http://pkg.julialang.org/?pkg=Twiddle)
-[![License](https://img.shields.io/badge/license-MPL-green.svg)](https://github.com/Ward9250/Twiddle.jl/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/Ward9250/Twiddle.jl/blob/master/LICENSE)
 [![](https://img.shields.io/badge/docs-stable-blue.svg)](https://Ward9250.github.io/Twiddle.jl/stable)
 [![](https://img.shields.io/badge/docs-latest-blue.svg)](https://Ward9250.github.io/Twiddle.jl/latest)
 
