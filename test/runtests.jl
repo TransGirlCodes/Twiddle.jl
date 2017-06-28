@@ -65,4 +65,11 @@ end
     @test Twiddle.mask(UInt16, 9) == 0x01ff
 end
 
+@testset "Swapping bits" begin
+    @test Twiddle.swapbits(0x98, 0, 7) == 0x19
+    @test Twiddle.swapbits(0x9008, 0, 15) == 0x1009
+    @test Twiddle.swapbits(0x90000008, 0, 31) == 0x10000009
+    @test Twiddle.swapbits(0x9000000000000008, 0, 63) == 0x1000000000000009
+end
+
 end

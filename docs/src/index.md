@@ -34,3 +34,11 @@ using Twiddle
 
 Twiddle.count_nonzero_nibbles(0x0F11F111F11111F1)
 ```
+
+Alternatively, explicitly import the name e.g.
+
+```@example qs
+using Twiddle: count_nonzero_nibbles
+
+count_nonzero_nibbles(0x0F11F111F11111F1)
+```
