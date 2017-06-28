@@ -38,7 +38,7 @@ markdown_extensions:
 pages:
 - Twiddle: index.md
 - Manual:
-    - Contents: manual.md
+    - Reference Manual: reference.md
     - Working with Nibbles: nibbles.md
     - Glossary: glossary.md
 - Contributing: contributing.md
