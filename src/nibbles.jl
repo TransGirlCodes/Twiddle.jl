@@ -106,7 +106,7 @@ Create a mask for the nibbles (aligned 4 bit segments) in an unsigned integer
 """
 @inline function nibble_mask{T<:Unsigned}(value::T, x::T)
     # XOR with the desired values. So matching nibbles will be 0000.
-    x $= value
+    @compat x ⊻= value
     # Horizontally OR the nibbles.
     x |= (x >> 1)
     x |= (x >> 2)
