@@ -88,8 +88,9 @@ swapbits(0x98, 0, 7)
 ```
 """
 @inline function swapbits{T<:Unsigned}(x::T, i::Integer, j::Integer)
-    ixj = (x >> i) & T(1)
-    @compat ixj ⊻= ((x >> j) & T(1))
+    ibit = (x >> i) & T(1)
+    jbit = (x >> j) & T(1)
+    @compat ixj = ibit ⊻ jbit
     ixj = (ixj << i) | (ixj << j)
     return @compat x ⊻ ixj
 end
