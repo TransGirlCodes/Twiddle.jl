@@ -10,6 +10,8 @@ __precompile__()
 
 module Twiddle
 
+using Compat
+
 """
     repeatbyte{T<:Unsigned}(::Type{T}, byte::UInt8)
 
@@ -88,9 +90,9 @@ swapbits(0x98, 0, 7)
 @inline function swapbits{T<:Unsigned}(x::T, i::Integer, j::Integer)
     ibit = (x >> i) & T(1)
     jbit = (x >> j) & T(1)
-    ixj = ibit ⊻ jbit
+    @compat ixj = ibit ⊻ jbit
     ixj = (ixj << i) | (ixj << j)
-    return x ⊻ ixj
+    return @compat x ⊻ ixj
 end
 
 include("nibbles.jl")
