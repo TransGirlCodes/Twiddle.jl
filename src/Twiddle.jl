@@ -10,6 +10,8 @@ __precompile__()
 
 module Twiddle
 
+using Compat
+
 """
     repeatbyte{T<:Unsigned}(::Type{T}, byte::UInt8)
 
@@ -43,7 +45,7 @@ times, but with a differently sized literal for the mask each time.
 Alternatively, you could write one parametric function with repeatbyte:
 
 ```julia
-f2{T <: Unsigned}(x::T) = x & Twiddle.repeatbyte(T, 0x33)
+f2{T<:Unsigned}(x::T) = x & Twiddle.repeatbyte(T, 0x33)
 ```
 
 You might expect this to be less efficient - `repeatbyte` uses several operations
@@ -70,8 +72,28 @@ julia> Twiddle.mask(UInt64, 8)
 0x00000000000000ff
 ```
 """
-mask{T<:Unsigned}(::Type{T}, n::Integer) = (T(1) << n) - 0x1
-mask(n::Integer) = mask(UInt64, n)
+@inline mask{T<:Unsigned}(::Type{T}, n::Integer) = (T(1) << n) - 0x1
+@inline mask(n::Integer) = mask(UInt64, n)
+
+"""
+    swapbits{T<:Unsigned}(x::T, i::Integer, j::Integer)
+
+Swap the i'th and j'th bits in an unsigned integer.
+Note this uses zero based indexes for `i` and `j`.
+
+E.g. to swap the LSB and MSB of a byte: 1001 1000 (0x98) -> 0001 1001 (0x19)
+
+```@example
+swapbits(0x98, 0, 7)
+```
+"""
+@inline function swapbits{T<:Unsigned}(x::T, i::Integer, j::Integer)
+    ibit = (x >> i) & T(1)
+    jbit = (x >> j) & T(1)
+    @compat ixj = ibit ⊻ jbit
+    ixj = (ixj << i) | (ixj << j)
+    return @compat x ⊻ ixj
+end
 
 include("nibbles.jl")
 include("bitpairs.jl")

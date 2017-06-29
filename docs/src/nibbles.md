@@ -32,14 +32,9 @@ manipulation of such binary data allows you to do operations on many nibbles
 
 # Nibble methods
 
-```@meta
-CurrentModule = Twiddle
-DocTestSetup  = quote
-    using Twiddle
-end
-```
-
-```@autodocs
-Modules = [Twiddle]
-Order = [:function]
-```
+- [`Twiddle.nibble_capacity`](@ref)
+- [`Twiddle.enumerate_nibbles`](@ref)
+- [`Twiddle.count_nonzero_nibbles`](@ref)
+- [`Twiddle.count_zero_nibbles`](@ref)
+- [`Twiddle.count_one_nibbles`](@ref)
+- [`Twiddle.nibble_mask`](@ref)
