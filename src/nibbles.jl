@@ -15,7 +15,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 Returns the number of nibbles that an unsigned integer of type `T`
 holds. This is essentially twice the size of the type (in bytes).
 """
-@inline function nibble_capacity{T<:Unsigned}(::Type{T})
+@inline function nibble_capacity(::Type{T}) where {T<:Unsigned}
     return sizeof(T) * 2
 end
 
@@ -35,7 +35,7 @@ Would result in:
 
 This is used to identify different occurances of certain bit patterns.
 """
-@inline function enumerate_nibbles{T<:Unsigned}(x::T)
+@inline function enumerate_nibbles(x::T) where {T<:Unsigned}
     x = x - ((x >> 1) & repeatbyte(T, 0x55))
     return (x & repeatbyte(T, 0x33)) + ((x >> 2) & repeatbyte(T, 0x33))
 end
@@ -52,7 +52,7 @@ E.g. An input of:
 
 Would give the answer: 15.
 """
-@inline function count_nonzero_nibbles{T<:Unsigned}(x::T)
+@inline function count_nonzero_nibbles(x::T) where {T<:Unsigned}
     out = UInt64(0)
     out |= x & repeatbyte(T, 0x11)
     out |= (x & repeatbyte(T, 0x22)) >> 1
@@ -74,7 +74,7 @@ E.g. An input of:
 
 Would give the answer: 1.
 """
-@inline function count_zero_nibbles{T<:Unsigned}(x::T)
+@inline function count_zero_nibbles(x::T) where {T<:Unsigned}
     return nibble_capacity(T) - count_nonzero_nibbles(x)
 end
 
@@ -90,7 +90,7 @@ E.g. An input of:
 
 Would give the answer: 4.
 """
-@inline function count_one_nibbles{T<:Unsigned}(x::T)
+@inline function count_one_nibbles(x::T) where {T<:Unsigned}
     out = x & repeatbyte(T, 0x11)
     out &= (x & repeatbyte(T, 0x22)) >> 1
     out &= (x & repeatbyte(T, 0x44)) >> 2
@@ -104,7 +104,7 @@ end
 Create a mask for the nibbles (aligned 4 bit segments) in an unsigned integer
 `x` that filter nibbles matching the corresponding nibble in `value`.
 """
-@inline function nibble_mask{T<:Unsigned}(value::T, x::T)
+@inline function nibble_mask(value::T, x::T) where {T<:Unsigned}
     # XOR with the desired values. So matching nibbles will be 0000.
     @compat x = x ⊻ value
     # Horizontally OR the nibbles.
