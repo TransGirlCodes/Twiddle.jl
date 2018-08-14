@@ -1,10 +1,22 @@
 using Documenter, Twiddle
 
-makedocs()
+makedocs(
+    format = :html,
+    sitename = "Twiddle.jl",
+    pages = [
+        "Home" => "index.md",
+        "Manual" => [
+            "Reference Manual" => "reference.md",
+            "Working with Nibbles" => "nibbles.md",
+            "Glossary" => "glossary.md"
+        ]
+    ]
+)
 deploydocs(
-    deps = Deps.pip("mkdocs", "pygments", "mkdocs-material"),
     repo = "github.com/Ward9250/Twiddle.jl.git",
-    julia = "0.5",
+    julia = "1.0",
     osname = "linux",
-    latest = "develop"
+    target = "build",
+    deps = nothing,
+    make = nothing
 )
