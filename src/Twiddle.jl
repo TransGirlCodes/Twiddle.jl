@@ -1,16 +1,4 @@
-#=
-Copyright (c) 2017 Ben J. Ward & Luis Yanes
-
-This Source Code Form is subject to the terms of the Mozilla Public
-License, v. 2.0. If a copy of the MPL was not distributed with this
-file, You can obtain one at http://mozilla.org/MPL/2.0/.
-=#
-
-__precompile__()
-
 module Twiddle
-
-using Compat
 
 """
     repeatbyte{T<:Unsigned}(::Type{T}, byte::UInt8)
@@ -90,9 +78,9 @@ swapbits(0x98, 0, 7)
 @inline function swapbits(x::T, i::Integer, j::Integer) where {T<:Unsigned}
     ibit = (x >> i) & T(1)
     jbit = (x >> j) & T(1)
-    @compat ixj = ibit ⊻ jbit
+    ixj = ibit ⊻ jbit
     ixj = (ixj << i) | (ixj << j)
-    return @compat x ⊻ ixj
+    return x ⊻ ixj
 end
 
 include("nibbles.jl")
