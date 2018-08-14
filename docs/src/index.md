@@ -5,8 +5,8 @@
 [![](https://img.shields.io/badge/docs-stable-blue.svg)](https://Ward9250.github.io/Twiddle.jl/stable)
 [![Twiddle](http://pkg.julialang.org/badges/Twiddle_0.7.svg)](http://pkg.julialang.org/?pkg=Twiddle)
 [![Twiddle](http://pkg.julialang.org/badges/Twiddle_1.0.svg)](http://pkg.julialang.org/?pkg=Twiddle)
-[![Build Status](https://travis-ci.org/Ward9250/Twiddle.jl.svg?branch=develop)](https://travis-ci.org/Ward9250/Twiddle.jl)
-[![Build status](https://ci.appveyor.com/api/projects/status/qpu140hq8d5javre/branch/develop?svg=true)](https://ci.appveyor.com/project/Ward9250/twiddle-jl/branch/develop)
+[![Build Status](https://travis-ci.org/BenJWard/Twiddle.jl.svg?branch=master)](https://travis-ci.org/BenJWard/Twiddle.jl)
+[![Build status](https://ci.appveyor.com/api/projects/status/cxxjc32mrjl3re12/branch/master?svg=true)](https://ci.appveyor.com/project/BenJWard/twiddle-jl/branch/master)
 
 
 ## Description
