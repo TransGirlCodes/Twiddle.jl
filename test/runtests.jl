@@ -8,7 +8,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 module TestTwiddle
 
-using Twiddle, Base.Test
+using Twiddle, Test
 
 @testset "Enumerating nibbles" begin
     @test Twiddle.enumerate_nibbles(0x42) == 0x11

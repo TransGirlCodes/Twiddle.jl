@@ -1,16 +1,4 @@
-#=
-Copyright (c) 2017 Ben J. Ward & Luis Yanes
-
-This Source Code Form is subject to the terms of the Mozilla Public
-License, v. 2.0. If a copy of the MPL was not distributed with this
-file, You can obtain one at http://mozilla.org/MPL/2.0/.
-=#
-
-__precompile__()
-
 module Twiddle
-
-using Compat
 
 """
     repeatbyte{T<:Unsigned}(::Type{T}, byte::UInt8)
@@ -54,7 +42,7 @@ those literal values are hard coded. However, thanks to constant folding during
 compilation, those operations are done once at compilation time and so the
 native instructions generated are identical.
 """
-@inline function repeatbyte{T<:Unsigned}(::Type{T}, byte::UInt8)
+@inline function repeatbyte(::Type{T}, byte::UInt8) where {T<:Unsigned}
     return div(typemax(T), 0xff) * byte
 end
 
@@ -72,7 +60,7 @@ julia> Twiddle.mask(UInt64, 8)
 0x00000000000000ff
 ```
 """
-@inline mask{T<:Unsigned}(::Type{T}, n::Integer) = (T(1) << n) - 0x1
+@inline mask(::Type{T}, n::Integer) where {T<:Unsigned} = (T(1) << n) - 0x1
 @inline mask(n::Integer) = mask(UInt64, n)
 
 """
@@ -87,12 +75,12 @@ E.g. to swap the LSB and MSB of a byte: 1001 1000 (0x98) -> 0001 1001 (0x19)
 swapbits(0x98, 0, 7)
 ```
 """
-@inline function swapbits{T<:Unsigned}(x::T, i::Integer, j::Integer)
+@inline function swapbits(x::T, i::Integer, j::Integer) where {T<:Unsigned}
     ibit = (x >> i) & T(1)
     jbit = (x >> j) & T(1)
-    @compat ixj = ibit ⊻ jbit
+    ixj = ibit ⊻ jbit
     ixj = (ixj << i) | (ixj << j)
-    return @compat x ⊻ ixj
+    return x ⊻ ixj
 end
 
 include("nibbles.jl")
