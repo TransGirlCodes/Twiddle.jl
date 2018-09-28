@@ -36,8 +36,8 @@ Would result in:
 This is used to identify different occurances of certain bit patterns.
 """
 @inline function enumerate_nibbles(x::T) where {T<:Unsigned}
-    x = x - ((x >> 1) & repeatbyte(T, 0x55))
-    return (x & repeatbyte(T, 0x33)) + ((x >> 2) & repeatbyte(T, 0x33))
+    x = x - ((x >>> 1) & repeatpattern(T, 0x55))
+    return (x & repeatpattern(T, 0x33)) + ((x >>> 2) & repeatpattern(T, 0x33))
 end
 
 """
@@ -52,13 +52,8 @@ E.g. An input of:
 
 Would give the answer: 15.
 """
-@inline function count_nonzero_nibbles(x::T) where {T<:Unsigned}
-    out = UInt64(0)
-    out |= x & repeatbyte(T, 0x11)
-    out |= (x & repeatbyte(T, 0x22)) >> 1
-    out |= (x & repeatbyte(T, 0x44)) >> 2
-    out |= (x & repeatbyte(T, 0x88)) >> 3
-    return count_ones(out)
+@inline function count_nonzero_nibbles(x::Unsigned)
+    return count_ones(x | (x >>> 1) | (x >>> 2) | (x >>> 3) & repeatpattern(typeof(x), 0x11))
 end
 
 """
@@ -75,11 +70,13 @@ E.g. An input of:
 Would give the answer: 1.
 """
 @inline function count_zero_nibbles(x::T) where {T<:Unsigned}
-    return nibble_capacity(T) - count_nonzero_nibbles(x)
+    #return nibble_capacity(T) - count_nonzero_nibbles(x)
+    xinv = ~x
+    return count_ones(((xinv >>> 1) & xinv) & repeatpattern(T, 0x55))
 end
 
 """
-    count_one_nibbles{T<:Unsigned}(x::T)
+    count_one_nibbles(x::Unsigned)
 
 Counts the number of nibbles (aligned 4 bit segments) in an unsigned integer `x`
 that have all their bits set i.e. counts all nibbles of 1111 in an integer.
@@ -90,12 +87,8 @@ E.g. An input of:
 
 Would give the answer: 4.
 """
-@inline function count_one_nibbles(x::T) where {T<:Unsigned}
-    out = x & repeatbyte(T, 0x11)
-    out &= (x & repeatbyte(T, 0x22)) >> 1
-    out &= (x & repeatbyte(T, 0x44)) >> 2
-    out &= (x & repeatbyte(T, 0x88)) >> 3
-    return count_ones(out)
+@inline function count_one_nibbles(x::Unsigned)
+    return count_ones(x & (x >>> 1) & (x >>> 2) & (x >>> 3) & repeatpattern(typeof(x), 0x11))
 end
 
 """
@@ -108,11 +101,11 @@ Create a mask for the nibbles (aligned 4 bit segments) in an unsigned integer
     # XOR with the desired values. So matching nibbles will be 0000.
     x = x ⊻ value
     # Horizontally OR the nibbles.
-    x |= (x >> 1)
-    x |= (x >> 2)
+    x |= (x >>> 1)
+    x |= (x >>> 2)
     # AND removes junk, we then widen x by multiplication and return
     # the inverse.
-    x &= repeatbyte(T, 0x11)
+    x &= repeatpattern(T, 0x11)
     x *= 0x0F
     return ~x
 end
