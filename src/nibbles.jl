@@ -41,7 +41,7 @@ This is used to identify different occurances of certain bit patterns.
 end
 
 """
-    count_nonzero_nibbles{T<:Unsigned}(x::T)
+    count_nonzero_nibbles(x::Unsigned)
 
 Count the number of nibbles (aligned 4 bit segments) in an unsigned integer `x`
 which have at least one bit set.
@@ -69,10 +69,9 @@ E.g. An input of:
 
 Would give the answer: 1.
 """
-@inline function count_zero_nibbles(x::T) where {T<:Unsigned}
+@inline function count_zero_nibbles(x::Unsigned)
     #return nibble_capacity(T) - count_nonzero_nibbles(x)
-    xinv = ~x
-    return count_ones(((xinv >>> 1) & xinv) & repeatpattern(T, 0x55))
+    return count_one_nibbles(~x)
 end
 
 """
