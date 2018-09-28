@@ -70,7 +70,6 @@ E.g. An input of:
 Would give the answer: 1.
 """
 @inline function count_zero_nibbles(x::Unsigned)
-    #return nibble_capacity(T) - count_nonzero_nibbles(x)
     return count_one_nibbles(~x)
 end
 
