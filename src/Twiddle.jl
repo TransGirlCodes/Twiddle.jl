@@ -1,10 +1,11 @@
 module Twiddle
 
 """
-    repeatbyte{T<:Unsigned}(::Type{T}, byte::UInt8)
+    repeatpattern{T<:Unsigned}(::Type{T}, pattern::Unsigned)
 
-Repeats the bitpattern of the `byte` throughout the an Unsigned integer of
-type `T`.
+Repeats the bitpattern of the `pattern` integer throughout the an
+Unsigned integer of type `T`. Note that this assumed the size of T (in bits)
+is larger than that of the `pattern` integer.
 
 This is useful for bit-twiddling code that is to work on any word size.
 
@@ -33,7 +34,7 @@ times, but with a differently sized literal for the mask each time.
 Alternatively, you could write one parametric function with repeatbyte:
 
 ```julia
-f2{T<:Unsigned}(x::T) = x & Twiddle.repeatbyte(T, 0x33)
+f2{T<:Unsigned}(x::T) = x & Twiddle.repeatpattern(T, 0x33)
 ```
 
 You might expect this to be less efficient - `repeatbyte` uses several operations
@@ -42,8 +43,13 @@ those literal values are hard coded. However, thanks to constant folding during
 compilation, those operations are done once at compilation time and so the
 native instructions generated are identical.
 """
+@inline function repeatpattern(::Type{T}, pattern::Unsigned) where {T<:Unsigned}
+    return div(typemax(T), typemax(pattern)) * pattern
+end
+
 @inline function repeatbyte(::Type{T}, byte::UInt8) where {T<:Unsigned}
-    return div(typemax(T), 0xff) * byte
+    depwarn("repeatbyte is deprecated, use repeatpattern instead", :repeatbyte)
+    return repeatpattern(T, byte)
 end
 
 """
