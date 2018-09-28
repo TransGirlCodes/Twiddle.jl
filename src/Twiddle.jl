@@ -34,21 +34,24 @@ times, but with a differently sized literal for the mask each time.
 Alternatively, you could write one parametric function with repeatbyte:
 
 ```julia
-f2{T<:Unsigned}(x::T) = x & Twiddle.repeatpattern(T, 0x33)
+f2(x::T) where {T<:Unsigned} = x & Twiddle.repeatpattern(T, 0x33)
+# Or a non-parametric version using `typeof`.
+f3(x::Unsigned) = x & Twiddle.repeatpattern(typeof(x), 0x33)
 ```
 
-You might expect this to be less efficient - `repeatbyte` uses several operations
+You might expect this to be less efficient - `repeatpattern` uses several operations
 to generate the values 0x33, 0x3333 and so on, whereas in the seperate methods,
 those literal values are hard coded. However, thanks to constant folding during
 compilation, those operations are done once at compilation time and so the
-native instructions generated are identical.
+native instructions generated are identical. You can check this with `@code_llvm`
+or `@code_native`.
 """
 @inline function repeatpattern(::Type{T}, pattern::Unsigned) where {T<:Unsigned}
     return div(typemax(T), typemax(pattern)) * pattern
 end
 
 @inline function repeatbyte(::Type{T}, byte::UInt8) where {T<:Unsigned}
-    depwarn("repeatbyte is deprecated, use repeatpattern instead", :repeatbyte)
+    Base.depwarn("repeatbyte is deprecated, use repeatpattern instead", :repeatbyte)
     return repeatpattern(T, byte)
 end
 
