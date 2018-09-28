@@ -53,11 +53,11 @@ E.g. An input of:
 Would give the answer: 15.
 """
 @inline function count_nonzero_nibbles(x::Unsigned)
-    return count_ones(x | (x >>> 1) | (x >>> 2) | (x >>> 3) & repeatpattern(typeof(x), 0x11))
+    return count_ones((x | (x >>> 1) | (x >>> 2) | (x >>> 3)) & repeatpattern(typeof(x), 0x11))
 end
 
 """
-    count_zero_nibbles{T<:Unsigned}(x::T)
+    count_zero_nibbles(x::Unsigned)
 
 Counts the number of nibbles (aligned 4 bit segments) in an unsigned integer `x`
 that have all their bits unset i.e.
