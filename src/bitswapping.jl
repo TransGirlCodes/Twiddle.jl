@@ -29,33 +29,15 @@ swapbits(0x98, 0, 7)
     return x ⊻ ixj
 end
 
-@inline function swap_odd_even_bits(x::Unsigned)
-    msk = repeatpattern(typeof(x), 0x55)
-    return ((x >> 1) & msk) | ((x & msk) << 1)
+@inline function _swap_bits_chunks_kernel(x, mask, offset)
+    msk = repeatpattern(typeof(x), mask)
+    return ((x >> offset) & msk) | ((x & msk) << offset)
 end
 
-@inline function swap_consecutive_bitpairs(x::Unsigned)
-    msk = repeatpattern(typeof(x), 0x33)
-    return ((x >> 2) & msk) | ((x & msk) << 2)
-end
-
-@inline function swap_nibbles(x::Unsigned)
-    msk = repeatpattern(typeof(x), 0x0F)
-    return ((x >> 4) & msk) | ((x & msk) << 4)
-end
-
-@inline function swap_bytes(x::Unsigned)
-    msk = repeatpattern(typeof(x), 0x00FF)
-    return ((x >> 8) & msk) | ((x & msk) << 8)
-end
-
-@inline function swap_bytepairs(x::Unsigned)
-    msk = repeatpattern(typeof(x), 0x0000FFFF)
-    return ((x >> 16) & msk) | ((x & msk) << 16)
-end
-
-@inline function swap_32bitpairs(x::Unsigned)
-    msk = repeatpattern(typeof(x), 0x00000000FFFFFFFF)
-    return ((x >> 32) & msk) | ((x & msk) << 32)
-end
+@inline swap_odd_even_bits(x::Unsigned)        = _swap_bits_chunks_kernel(x, 0x55, 1)
+@inline swap_consecutive_bitpairs(x::Unsigned) = _swap_bits_chunks_kernel(x, 0x33, 2) 
+@inline swap_nibbles(x::Unsigned)              = _swap_bits_chunks_kernel(x, 0x0F, 4) 
+@inline swap_bytes(x::Unsigned)                = _swap_bits_chunks_kernel(x, 0x00FF, 8)
+@inline swap_bytepairs(x::Unsigned)            = _swap_bits_chunks_kernel(x, 0x0000FFFF, 16)
+@inline swap_32bitpairs(x::Unsigned)           = _swap_bits_chunks_kernel(x, 0x00000000FFFFFFFF, 32)
 
