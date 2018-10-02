@@ -50,7 +50,7 @@ Would give the answer: 15.
 end
 
 """
-    count_zero_nibbles(x::Unsigned)
+    count_0000_nibbles(x::Unsigned)
 
 Counts the number of nibbles (aligned 4 bit segments) in an unsigned integer `x`
 that have all their bits unset i.e.
@@ -62,12 +62,17 @@ E.g. An input of:
 
 Would give the answer: 1.
 """
+@inline function count_0000_nibbles(x::Unsigned)
+    return count_1111_nibbles(~x)
+end
+
 @inline function count_zero_nibbles(x::Unsigned)
-    return count_one_nibbles(~x)
+    Base.depwarn("count_zero_nibbles is deprecated, use count_0000_nibbles instead", :count_zero_nibbles)
+    return count_0000_nibbles(x)
 end
 
 """
-    count_one_nibbles(x::Unsigned)
+    count_1111_nibbles(x::Unsigned)
 
 Counts the number of nibbles (aligned 4 bit segments) in an unsigned integer `x`
 that have all their bits set i.e. counts all nibbles of 1111 in an integer.
@@ -78,6 +83,12 @@ E.g. An input of:
 
 Would give the answer: 4.
 """
-@inline function count_one_nibbles(x::Unsigned)
+@inline function count_1111_nibbles(x::Unsigned)
     return count_ones(x & (x >> 1) & (x >> 2) & (x >> 3) & repeatpattern(typeof(x), 0x11))
 end
+
+@inline function count_one_nibbles(x::Unsigned)
+    Base.depwarn("count_one_nibbles is deprecated, use count_1111_nibbles instead", :count_one_nibbles)
+    return count_1111_nibbles(x)
+end
+
