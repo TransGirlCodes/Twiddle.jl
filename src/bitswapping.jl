@@ -38,6 +38,6 @@ end
 @inline swap_consecutive_bitpairs(x::Unsigned) = _swap_bits_chunks_kernel(x, 0x33, 2) 
 @inline swap_nibbles(x::Unsigned)              = _swap_bits_chunks_kernel(x, 0x0F, 4) 
 @inline swap_bytes(x::Unsigned)                = _swap_bits_chunks_kernel(x, 0x00FF, 8)
-@inline swap_bytepairs(x::Unsigned)            = _swap_bits_chunks_kernel(x, 0x0000FFFF, 16)
-@inline swap_32bitpairs(x::Unsigned)           = _swap_bits_chunks_kernel(x, 0x00000000FFFFFFFF, 32)
-
+@inline swap_uint16s(x::Unsigned)              = _swap_bits_chunks_kernel(x, 0x0000FFFF, 16)
+@inline swap_uint32s(x::Unsigned)              = _swap_bits_chunks_kernel(x, 0x00000000FFFFFFFF, 32)
+@inline swap_uint64s(x::Uint128)               = _swap_bits_chunks_kernel(x, 0x0000000000000000FFFFFFFFFFFFFFFF, 64)
