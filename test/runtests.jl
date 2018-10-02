@@ -13,11 +13,11 @@ using Twiddle, Test
 @testset "Counting" begin
 
     @testset "Counting zero nibbles" begin
-        @test Twiddle.count_zero_nibbles(0x0F) == 1
-        @test Twiddle.count_zero_nibbles(0x0F11) == 1
-        @test Twiddle.count_zero_nibbles(0x0F11F111) == 1
-        @test Twiddle.count_zero_nibbles(0x0F11F111F11111F1) == 1
-        @test Twiddle.count_zero_nibbles(0x0F11F111F11111F10F11F111F11111F1) == 2
+        @test Twiddle.count_0000_nibbles(0x0F) == 1
+        @test Twiddle.count_0000_nibbles(0x0F11) == 1
+        @test Twiddle.count_0000_nibbles(0x0F11F111) == 1
+        @test Twiddle.count_0000_nibbles(0x0F11F111F11111F1) == 1
+        @test Twiddle.count_0000_nibbles(0x0F11F111F11111F10F11F111F11111F1) == 2
     end
     @testset "Counting non-zero nibbles" begin
         @test Twiddle.count_nonzero_nibbles(0x0F) == 1
@@ -27,11 +27,20 @@ using Twiddle, Test
         @test Twiddle.count_nonzero_nibbles(0x0F11F111F11111F10F11F111F11111F1) == 30
     end
     @testset "Counting one nibbles" begin
-        @test Twiddle.count_one_nibbles(0x0F) == 1
-        @test Twiddle.count_one_nibbles(0x0F11) == 1
-        @test Twiddle.count_one_nibbles(0x0F11F111) == 2
-        @test Twiddle.count_one_nibbles(0x0F11F111F11111F1) == 4
-        @test Twiddle.count_one_nibbles(0x0F11F111F11111F10F11F111F11111F1) == 8
+        @test Twiddle.count_1111_nibbles(0x0F) == 1
+        @test Twiddle.count_1111_nibbles(0x0F11) == 1
+        @test Twiddle.count_1111_nibbles(0x0F11F111) == 2
+        @test Twiddle.count_1111_nibbles(0x0F11F111F11111F1) == 4
+        @test Twiddle.count_1111_nibbles(0x0F11F111F11111F10F11F111F11111F1) == 8
+    end
+    @testset "Counting bitpairs" begin
+        @test Twiddle.count_00_bitpairs(0x0F) == 4
+        @test Twiddle.count_00_bitpairs(0x185DF69C185DF69C) == 6
+        @test Twiddle.count_nonzero_bitpairs(0x185DF69C185DF69C) == 26
+        @test Twiddle.count_11_bitpairs(0x185DF69C185DF69C) == 8
+        @test Twiddle.count_11_bitpairs(0x0F) == 2
+        @test Twiddle.count_01_bitpairs(0x185DF69C185DF69C) == 12
+        @test Twiddle.count_10_bitpairs(0x185DF69C185DF69C) == 6
     end
     
     
@@ -44,12 +53,6 @@ end
     @test Twiddle.enumerate_nibbles(0x4216CEDF) == 0x11122334
     @test Twiddle.enumerate_nibbles(0x4216CEDF4216CEDF) == 0x1112233411122334
     @test Twiddle.enumerate_nibbles(0x4216CEDF4216CEDF4216CEDF4216CEDF) == 0x11122334111223341112233411122334
-end
-
-@testset "Counting bitpairs" begin
-    @test Twiddle.count_zero_bitpairs(0x185DF69C185DF69C) == 6
-    @test Twiddle.count_nonzero_bitpairs(0x185DF69C185DF69C) == 26
-    @test Twiddle.count_one_bitpairs(0x185DF69C185DF69C) == 8
 end
 
 @testset "Masking nibbles" begin

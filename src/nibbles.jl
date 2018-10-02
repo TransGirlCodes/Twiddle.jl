@@ -19,6 +19,10 @@ holds. This is essentially twice the size of the type (in bytes).
     return sizeof(T) * 2
 end
 
+@inline function bitpair_capacity(::Type{T}) where {T<:Unsigned}
+    return sizeof(T) * 4
+end
+
 """
     enumerate_nibbles{T<:Unsigned}(x::T)
 
