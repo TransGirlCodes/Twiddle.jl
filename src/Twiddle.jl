@@ -55,27 +55,13 @@ end
     return repeatpattern(T, byte)
 end
 
-"""
-    mask{T<:Unsigned}(::Type{T}, n::Integer)
 
-Creates a bit mask for given number of bits `n`.
-
-The mask starts from the least significant bit, and end at bit `n`.
-
-e.g:
-
-```jldoctest
-julia> Twiddle.mask(UInt64, 8)
-0x00000000000000ff
-```
-"""
-@inline mask(::Type{T}, n::Integer) where {T<:Unsigned} = (T(1) << n) - 0x1
-@inline mask(n::Integer) = mask(UInt64, n)
 
 @inline mergebits(a, b, mask) = a ⊻ ((a ⊻ b) & mask)
 
 include("bitswapping.jl")
+include("masking.jl")
 include("nibbles.jl")
-include("bitpairs.jl")
+include("counting.jl")
 
 end

@@ -10,15 +10,8 @@ module TestTwiddle
 
 using Twiddle, Test
 
-@testset "Enumerating nibbles" begin
-    @test Twiddle.enumerate_nibbles(0x42) == 0x11
-    @test Twiddle.enumerate_nibbles(0x4216) == 0x1112
-    @test Twiddle.enumerate_nibbles(0x4216CEDF) == 0x11122334
-    @test Twiddle.enumerate_nibbles(0x4216CEDF4216CEDF) == 0x1112233411122334
-    @test Twiddle.enumerate_nibbles(0x4216CEDF4216CEDF4216CEDF4216CEDF) == 0x11122334111223341112233411122334
-end
+@testset "Counting" begin
 
-@testset "Counting nibbles" begin
     @testset "Counting zero nibbles" begin
         @test Twiddle.count_zero_nibbles(0x0F) == 1
         @test Twiddle.count_zero_nibbles(0x0F11) == 1
@@ -40,6 +33,17 @@ end
         @test Twiddle.count_one_nibbles(0x0F11F111F11111F1) == 4
         @test Twiddle.count_one_nibbles(0x0F11F111F11111F10F11F111F11111F1) == 8
     end
+    
+    
+end
+
+
+@testset "Enumerating nibbles" begin
+    @test Twiddle.enumerate_nibbles(0x42) == 0x11
+    @test Twiddle.enumerate_nibbles(0x4216) == 0x1112
+    @test Twiddle.enumerate_nibbles(0x4216CEDF) == 0x11122334
+    @test Twiddle.enumerate_nibbles(0x4216CEDF4216CEDF) == 0x1112233411122334
+    @test Twiddle.enumerate_nibbles(0x4216CEDF4216CEDF4216CEDF4216CEDF) == 0x11122334111223341112233411122334
 end
 
 @testset "Counting bitpairs" begin
