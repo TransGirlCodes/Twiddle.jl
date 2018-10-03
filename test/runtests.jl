@@ -34,7 +34,7 @@ using Twiddle, Test
         @test Twiddle.count_1111_nibbles(0x0F11F111F11111F10F11F111F11111F1) == 8
     end
     @testset "Counting bitpairs" begin
-        @test Twiddle.count_00_bitpairs(0x0F) == 4
+        @test Twiddle.count_00_bitpairs(0x0F) == 2
         @test Twiddle.count_00_bitpairs(0x185DF69C185DF69C) == 6
         @test Twiddle.count_nonzero_bitpairs(0x185DF69C185DF69C) == 26
         @test Twiddle.count_11_bitpairs(0x185DF69C185DF69C) == 8
