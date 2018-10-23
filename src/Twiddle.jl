@@ -1,10 +1,11 @@
 module Twiddle
 
 """
-    repeatbyte{T<:Unsigned}(::Type{T}, byte::UInt8)
+    repeatpattern{T<:Unsigned}(::Type{T}, pattern::Unsigned)
 
-Repeats the bitpattern of the `byte` throughout the an Unsigned integer of
-type `T`.
+Repeats the bitpattern of the `pattern` integer throughout the an
+Unsigned integer of type `T`. Note that this assumed the size of T (in bits)
+is larger than that of the `pattern` integer.
 
 This is useful for bit-twiddling code that is to work on any word size.
 
@@ -33,57 +34,34 @@ times, but with a differently sized literal for the mask each time.
 Alternatively, you could write one parametric function with repeatbyte:
 
 ```julia
-f2{T<:Unsigned}(x::T) = x & Twiddle.repeatbyte(T, 0x33)
+f2(x::T) where {T<:Unsigned} = x & Twiddle.repeatpattern(T, 0x33)
+# Or a non-parametric version using `typeof`.
+f3(x::Unsigned) = x & Twiddle.repeatpattern(typeof(x), 0x33)
 ```
 
-You might expect this to be less efficient - `repeatbyte` uses several operations
+You might expect this to be less efficient - `repeatpattern` uses several operations
 to generate the values 0x33, 0x3333 and so on, whereas in the seperate methods,
 those literal values are hard coded. However, thanks to constant folding during
 compilation, those operations are done once at compilation time and so the
-native instructions generated are identical.
+native instructions generated are identical. You can check this with `@code_llvm`
+or `@code_native`.
 """
+@inline function repeatpattern(::Type{T}, pattern::Unsigned) where {T<:Unsigned}
+    return div(typemax(T), typemax(pattern)) * pattern
+end
+
 @inline function repeatbyte(::Type{T}, byte::UInt8) where {T<:Unsigned}
-    return div(typemax(T), 0xff) * byte
+    Base.depwarn("repeatbyte is deprecated, use repeatpattern instead", :repeatbyte)
+    return repeatpattern(T, byte)
 end
 
-"""
-    mask{T<:Unsigned}(::Type{T}, n::Integer)
 
-Creates a bit mask for given number of bits `n`.
 
-The mask starts from the least significant bit, and end at bit `n`.
+@inline mergebits(a, b, mask) = a ⊻ ((a ⊻ b) & mask)
 
-e.g:
-
-```jldoctest
-julia> Twiddle.mask(UInt64, 8)
-0x00000000000000ff
-```
-"""
-@inline mask(::Type{T}, n::Integer) where {T<:Unsigned} = (T(1) << n) - 0x1
-@inline mask(n::Integer) = mask(UInt64, n)
-
-"""
-    swapbits{T<:Unsigned}(x::T, i::Integer, j::Integer)
-
-Swap the i'th and j'th bits in an unsigned integer.
-Note this uses zero based indexes for `i` and `j`.
-
-E.g. to swap the LSB and MSB of a byte: 1001 1000 (0x98) -> 0001 1001 (0x19)
-
-```@example
-swapbits(0x98, 0, 7)
-```
-"""
-@inline function swapbits(x::T, i::Integer, j::Integer) where {T<:Unsigned}
-    ibit = (x >> i) & T(1)
-    jbit = (x >> j) & T(1)
-    ixj = ibit ⊻ jbit
-    ixj = (ixj << i) | (ixj << j)
-    return x ⊻ ixj
-end
-
+include("bitswapping.jl")
+include("masking.jl")
 include("nibbles.jl")
-include("bitpairs.jl")
+include("counting.jl")
 
 end

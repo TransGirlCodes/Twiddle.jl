@@ -6,6 +6,7 @@ makedocs(
     pages = [
         "Home" => "index.md",
         "Manual" => [
+            "Counting bits" => "bitcounting.md",
             "Reference Manual" => "reference.md",
             "Working with Nibbles" => "nibbles.md",
             "Glossary" => "glossary.md"
