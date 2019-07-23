@@ -1,7 +1,7 @@
 using Documenter, Twiddle
 
 makedocs(
-    format = :html,
+    format = Documenter.HTML(),
     sitename = "Twiddle.jl",
     pages = [
         "Home" => "index.md",
@@ -11,11 +11,11 @@ makedocs(
             "Working with Nibbles" => "nibbles.md",
             "Glossary" => "glossary.md"
         ]
-    ]
+    ],
+    authors = "Ben J. Ward & Luis Yanes."
 )
 deploydocs(
     repo = "github.com/Ward9250/Twiddle.jl.git",
-    julia = "1.0",
     osname = "linux",
     target = "build",
     deps = nothing,

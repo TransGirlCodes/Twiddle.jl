@@ -46,7 +46,6 @@ using Twiddle, Test
     
 end
 
-
 @testset "Enumerating nibbles" begin
     @test Twiddle.enumerate_nibbles(0x42) == 0x11
     @test Twiddle.enumerate_nibbles(0x4216) == 0x1112

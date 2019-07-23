@@ -1,13 +1,10 @@
 # Twiddle.jl
 
-[![](https://img.shields.io/github/release/Ward9250/Twiddle.jl.svg)](https://github.com/Ward9250/Twiddle.jl/releases/latest)
-[![](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/Ward9250/Twiddle.jl/blob/master/LICENSE)
-[![](https://img.shields.io/badge/docs-stable-blue.svg)](https://Ward9250.github.io/Twiddle.jl/stable)
-[![](http://pkg.julialang.org/badges/Twiddle_0.7.svg)](http://pkg.julialang.org/?pkg=Twiddle)
-[![](http://pkg.julialang.org/badges/Twiddle_1.0.svg)](http://pkg.julialang.org/?pkg=Twiddle)
+[![](https://img.shields.io/github/release/BenJWard/Twiddle.jl.svg)](https://github.com/BenJWard/Twiddle.jl/releases/latest)
+[![](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/BenJWard/Twiddle.jl/blob/master/LICENSE)
+[![](https://img.shields.io/badge/docs-stable-blue.svg)](https://BenJWard.github.io/Twiddle.jl/stable)
 [![](https://travis-ci.org/BenJWard/Twiddle.jl.svg?branch=master)](https://travis-ci.org/BenJWard/Twiddle.jl)
 [![](https://ci.appveyor.com/api/projects/status/cxxjc32mrjl3re12/branch/master?svg=true)](https://ci.appveyor.com/project/BenJWard/twiddle-jl/branch/master)
-
 
 ## Description
 
