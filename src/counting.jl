@@ -76,7 +76,7 @@ E.g. An input of:
 Would give the answer: 11.
 """
 @inline function count_01_bitpairs(x::Unsigned)
-    return count_ones((((~x) >> 1) & x) & repeatbyte(typeof(x), 0x55))
+    return count_ones((((~x) >> 1) & x) & repeatpattern(typeof(x), 0x55))
 end
 
 """
@@ -91,7 +91,7 @@ E.g. An input of:
 Would give the answer: 3.
 """
 @inline function count_10_bitpairs(x::Unsigned)
-    return count_ones(((x >> 1) & (~x)) & repeatbyte(typeof(x), 0x55))
+    return count_ones(((x >> 1) & (~x)) & repeatpattern(typeof(x), 0x55))
 end
 
 """

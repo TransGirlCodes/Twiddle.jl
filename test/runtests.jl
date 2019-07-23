@@ -62,7 +62,7 @@ end
             (UInt64, 0x185DF69C185DF69C, 0x000F0000000F0000),
             (UInt128, 0x185DF69C185DF69C185DF69C185DF69C, 0x000F0000000F0000000F0000000F0000)]
     for arg in args
-        @test Twiddle.nibble_mask(Twiddle.repeatbyte(arg[1], 0xDD), arg[2]) == arg[3]
+        @test Twiddle.nibble_mask(Twiddle.repeatpattern(arg[1], 0xDD), arg[2]) == arg[3]
     end
 end
 
