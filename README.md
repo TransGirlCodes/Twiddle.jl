@@ -22,7 +22,7 @@ many bit-twiddling tips and tricks.
 
 ## Installation
 
-Install BioSequences from the Julia REPL:
+Install Twiddle.jl from the Julia REPL:
 
 ```julia
 using Pkg
