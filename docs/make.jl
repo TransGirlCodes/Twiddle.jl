@@ -16,8 +16,7 @@ makedocs(
 )
 deploydocs(
     repo = "github.com/Ward9250/Twiddle.jl.git",
-    osname = "linux",
-    target = "build",
     deps = nothing,
-    make = nothing
+    make = nothing,
+    push_preview = true
 )
