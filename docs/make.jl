@@ -15,9 +15,8 @@ makedocs(
     authors = "Ben J. Ward & Luis Yanes."
 )
 deploydocs(
-    repo = "github.com/BenJWard/Twiddle.jl.git",
-    osname = "linux",
-    target = "build",
+    repo = "github.com/Ward9250/Twiddle.jl.git",
     deps = nothing,
-    make = nothing
+    make = nothing,
+    push_preview = true
 )
