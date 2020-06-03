@@ -35,6 +35,6 @@ manipulation of such binary data allows you to do operations on many nibbles
 - [`Twiddle.nibble_capacity`](@ref)
 - [`Twiddle.enumerate_nibbles`](@ref)
 - [`Twiddle.count_nonzero_nibbles`](@ref)
-- [`Twiddle.count_zero_nibbles`](@ref)
-- [`Twiddle.count_one_nibbles`](@ref)
+- [`Twiddle.count_0000_nibbles`](@ref)
+- [`Twiddle.count_1111_nibbles`](@ref)
 - [`Twiddle.nibble_mask`](@ref)
